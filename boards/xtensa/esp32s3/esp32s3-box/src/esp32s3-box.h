@@ -76,6 +76,14 @@
 #define TOUCHSCEEN_CLOCK    (400 * 1000)
 #define TOUCHSCEEN_INT      3
 
+/* I2C Port */
+
+#define I2C_PORT            0
+
+#ifdef CONFIG_AUDIO_ES8311
+#  define SPEAKER_ENABLE_GPIO  46
+#endif
+
 /****************************************************************************
  * Public Types
  ****************************************************************************/
