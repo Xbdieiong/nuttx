@@ -828,6 +828,7 @@ static int es8311_getcaps(FAR struct audio_lowerhalf_s *dev, int type,
               caps->ac_controls.b[0] = AUDIO_TYPE_INPUT |
                                        AUDIO_TYPE_OUTPUT |
                                        AUDIO_TYPE_FEATURE;
+              caps->ac_format.hw = (1 << (AUDIO_FMT_PCM - 1));
               break;
           }
 
