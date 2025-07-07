@@ -260,6 +260,37 @@ endchoice # I2C Address
 
 endif # SENSORS_BMI160
 
+config SENSORS_BMI088
+	bool "Bosch BMI088 Inertial Measurement Sensor support"
+	default n
+	select I2C
+	---help---
+		Enable driver support for the Bosch BMI088 Inertial
+		Measurement sensor
+
+if SENSORS_BMI088
+
+config SENSORS_BMI088_UORB
+	bool "BMI088 UORB Interface"
+	default n
+	---help---
+		Enables Work with the UORB or Character Device interface.
+		If not set, the Character Device is used by default.
+
+choice
+	prompt "BMI160 Interface"
+	default SENSORS_BMI160_SPI
+
+config SENSORS_BMI160_SPI
+	bool "BMI160 SPI Interface"
+	select SPI
+	---help---
+		Enables support for the SPI interface
+
+endchoice # BMI160 Interface
+
+endif # SENSORS_BMI160
+
 config SENSORS_BMI270
 	bool "Bosch BMI270 Inertial Measurement Sensor support"
 	default n
