@@ -44,10 +44,12 @@
  * Pre-processor Definitions
  ****************************************************************************/
 
+#define BMI160_SPI_MAXFREQUENCY 10000000
+
 /* BMI088 Accelerometer Register Definations and Configuration Values */
 
 #define BMI088_ACC_CHIP_ID             (0x00) /* Chip ID for accelerometer */
-#define BMI088_ACC_CHIP_ID_VELUE       (0x1E) /* ID Code for accelerometer */
+#define BMI088_ACC_CHIP_ID_VALUE       (0x1E) /* ID Code for accelerometer */
 
 #define BMI088_ACC_ERR                 (0x02) /* Error register */
 #define BMI088_ACC_CONFIG_ERROR        (0x04) /* Configuration error flag */
@@ -173,6 +175,87 @@ extern const uint8_t g_bmi088_config_file[];
  * Public Function Prototypes
  ****************************************************************************/
 
+#ifdef CONFIG_SENSORS_BMI088_SPI
 
+/****************************************************************************
+ * Name: bmi088_configspi
+ *
+ * Description:
+ *   Configure the SPI interface for the BMI088.
+ *
+ ****************************************************************************/
+void bmi088_configspi(FAR struct spi_dev_s *spi)
+
+/****************************************************************************
+ * Name: bmi088_acc_getreg8
+ *
+ * Description:
+ *   Read from an 8-bit BMI088 accelerometer register.
+ *
+ ****************************************************************************/
+void bmi088_acc_getreg8(FAR struct bmi088_dev_s *priv,
+                                uint8_t regaddr,uint8_t *regval)
+
+/****************************************************************************
+ * Name: bmi088_gyro_getreg8
+ *
+ * Description:
+ *   Read from an 8-bit BMI088 gyroscope register.
+ *
+ ****************************************************************************/
+void bmi088_gyro_getreg8(FAR struct bmi088_dev_s *priv,
+                                uint8_t regaddr,uint8_t *regval);
+
+/****************************************************************************
+ * Name: bmi088_acc_putreg8
+ *
+ * Description:
+ *   Write a value to an 8-bit BMI088 accelerometer register.
+ *
+ ****************************************************************************/
+void bmi088_acc_putreg8(FAR struct bmi088_dev_s *priv,
+                                uint8_t regaddr, uint8_t regval);
+
+/****************************************************************************
+ * Name: bmi088_gyro_putreg8
+ *
+ * Description:
+ *   Write a value to an 8-bit BMI088 gyroscope register.
+ *
+ ****************************************************************************/
+void bmi088_gyro_putreg8(FAR struct bmi088_dev_s *priv,
+                                uint8_t regaddr, uint8_t regval);
+
+/****************************************************************************
+ * Name: bmi088_acc_check_id
+ *
+ * Description:
+ *   Check the chip ID of the accelerometer.
+ *
+ * Input Parameters:
+ *   priv - Pointer to the BMI088 device structure.
+ *
+ * Returned Value:
+ *   OK on success; a negated errno value on failure.
+ *
+ ****************************************************************************/
+int bmi088_acc_check_id(FAR struct bmi088_dev_s *priv);
+
+/****************************************************************************
+ * Name: bmi088_gyro_check_id
+ *
+ * Description:
+ *   Check the chip ID of the gyroscope.
+ *
+ * Input Parameters:
+ *   priv - Pointer to the BMI088 device structure.
+ *
+ * Returned Value:
+ *   OK on success; a negated errno value on failure.
+ *
+ ****************************************************************************/
+int bmi088_gyro_check_id(FAR struct bmi088_dev_s *priv);
+
+#endif
 
 #endif  /* __INCLUDE_NUTTX_SENSORS_BMI088_BASE_H */
