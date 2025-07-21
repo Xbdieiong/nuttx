@@ -1,5 +1,5 @@
 /****************************************************************************
- * drivers/sensors/bmi088.c
+ * drivers/sensors/bmi088_uorb.c
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -26,7 +26,7 @@
 
 #include "bmi088_base.h"
 
-#if defined(CONFIG_SENSORS_BMI088)
+// #if defined(CONFIG_SENSORS_BMI088)
 
 /****************************************************************************
  * Pre-processor Definitions
@@ -48,4 +48,12 @@
  * Public Functions
  ****************************************************************************/
 
-#endif /* CONFIG_SENSORS_BMI088 */
+int bmi088_register_accel(int devno,
+    FAR struct spi_dev_s* dev)
+{
+    int ret;
+    
+    return ret;
+}
+
+// #endif /* CONFIG_SENSORS_BMI088 */

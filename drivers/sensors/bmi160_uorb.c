@@ -29,7 +29,6 @@
 #include <nuttx/wqueue.h>
 #include <nuttx/signal.h>
 #include <nuttx/sensors/sensor.h>
-
 #if defined(CONFIG_SENSORS_BMI160_UORB)
 
 /****************************************************************************
